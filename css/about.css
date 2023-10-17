@@ -1,0 +1,303 @@
+@charset "UTF-8";
+
+
+/* reset */
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+button:focus {outline:none;}
+a:focus {outline:none}
+img {vertical-align: middle;}
+
+
+/* font */
+@font-face {
+    font-family: 'SansPosterBold';
+    src: url(font/SansPosterBold.ttf);
+}
+@font-face {
+    font-family: 'against';
+    src: url(font/against\ regular.otf);
+}
+@font-face {
+    font-family: Edensor;
+    src: url(font/Edensor-FREE.otf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.en1 {font-family: 'SansPosterBold',sans-serif;}
+.en2 {font-family: 'against',sans-serif;}
+.en3 {font-family: 'Edensor',sans-serif;}
+.en4 {font-family: 'Montserrat', sans-serif; letter-spacing: -1px;}
+
+/* layout */
+body {background: #f7f7f7; width: 100%; color: #131313; font-family: 'pretendard',sans-serif;}
+
+/* header */
+header {width: 100%; margin: 0 auto; height: 100px; box-sizing: border-box; padding-top: 30px;}
+header .menu {width: 500px; display: flex; justify-content: space-between; margin: 0 auto;} 
+header .menu p a {font-size: 1.04vw; padding: 8px 24px; border-radius: 30px; transition: 0.2s; position: relative;}
+header .menu p a::before {content: ''; width: 0%; height: 2px; position: absolute; left: 10%; bottom: 7%; background: #131313; opacity: 0;}
+/* nav hover */
+header .menu p a:hover {animation: spacing 0.5s;}
+@keyframes spacing {
+    50% {letter-spacing: 0px;}
+}
+header .menu p a:hover::before {opacity: 1; transition: all 0.3s; width: 80%;}
+
+header .menuOpen {width:40px; height: 40px; position: fixed; top: 30px; right: 7.5%; mix-blend-mode: difference !important; z-index: 10;}
+header .menuOpen a {display: block; width: 100%; height: 100%; position: relative;}
+header .menuOpen a::before , header .menuOpen a::after , header .menuOpen a span {content: ''; width: 80%; height: 8%; background: #f7f7f7; position: absolute; top: 40%; left: 10%;}
+header .menuOpen a::after {top: 60%;}
+header .menuOpen a:hover {animation: shake 0.3s  linear; transition: all 0.5s;}
+@keyframes shake {
+    30% {transform: rotate(8deg);}
+    60% {transform: rotate(8deg);}
+}
+
+header .halfMenu {width: 50%; height: 100vh; position: fixed; top: 0; right: 0; text-align: center; box-sizing: border-box; padding-top: 150px; background: rgba(0, 0, 0, 0.9); z-index: 15; color: #f7f7f7; transform: translateX(100%); transition: all 0.4s;}
+header .halfMenu.on {transform: translateX(0%); transition: all 0.4s;}
+header .halfMenu .menuClose {width: 40px; height: 40px; position: absolute; top: 30px; right: 15%; opacity: 0;}
+header .halfMenu.on .menuClose {opacity: 1; transition: 0.8s;}
+header .halfMenu .menuClose a {display: block; width: 100%; height: 100%; position: relative; filter: brightness(0.7);}
+header .halfMenu .menuClose a::before , header .halfMenu .menuClose a::after {content: ''; width: 80%; height: 8%; position: absolute; top: 40%; left: 0; background: #f7f7f7; transform: rotate(45deg);}
+header .halfMenu .menuClose a::before {transform: rotate(-45deg);}
+header .halfMenu .menuClose a:hover {filter: brightness(1); transition: all 0.3s;}
+header .halfMenu li {width: 100%;}
+header .halfMenu li a {width:100%; height: 100%; font-size: 5.2vw; filter: brightness(0.7); display: block; position: relative;}
+header .halfMenu li a:hover {filter: brightness(1); transition: all 0.3s;}
+
+/* topbutton */
+.topBtn {position: fixed; bottom: 5%; right: 3%; width: 70px; height: 70px; mix-blend-mode: difference !important; z-index: 13;}
+.topBtn a {width: 100%; height: 100%; text-align: center; display: block; line-height: 70px; font-size: 1.04vw; color: #f7f7f7; filter: brightness(0.7); border: 1px solid #f7f7f7; border-radius: 50%;}
+.topBtn a:hover {animation: top 0.3s; filter: brightness(1); transition: all 0.3s;}
+@keyframes top {
+    50% {transform: scale(1.05);}
+}
+
+/* visual */
+.visual {height: 100vh; position: relative; text-align: center;}
+
+.visual h2 {width: 100%; font-size: 6.77vw;  position: absolute; top: 23%; left: 50%; transform: translateX(-50%);}
+.visual #line1 {top: 20%; left: 50%;}
+.visual #line2 {top: 35%; left: 50%;}
+.visual .a {color: transparent; -webkit-text-stroke: 0.16vw #019838;}
+.visual .b {color: #019838; animation: water 2.5s ease-in-out infinite;}
+.visual .b:nth-child(2) {animation: water 2.5s ease-in-out infinite;}
+
+
+@keyframes water {
+    0%,
+    100% {
+      clip-path: polygon(
+        0% 45%,
+        16% 44%,
+        33% 50%,
+        54% 60%,
+        70% 61%,
+        84% 59%,
+        100% 52%,
+        100% 100%,
+        0% 100%
+      );
+    }
+  
+    50% {
+      clip-path: polygon(
+        0% 60%,
+        15% 65%,
+        34% 66%,
+        51% 62%,
+        67% 50%,
+        84% 45%,
+        100% 46%,
+        100% 100%,
+        0% 100%
+      );
+    }
+  }
+
+
+
+
+.visual .scroll {width: 100%; text-align: center; position: absolute; bottom: 20%;}
+.visual .scroll p {font-size: 1.04vw; font-weight: bolder;}
+.visual .scroll p img {width: 20px;}
+.visual .scroll p img {animation: down 1s infinite linear;}
+@keyframes down {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(10px);}
+}
+
+
+/* about */
+.about {width: 100%; height: 160vh; padding-top: 60vh; box-sizing: border-box;}
+.about .inner {width: 80%; display: flex; justify-content: space-between; margin: 0 auto;}
+.about .inner .img {width: 30%;}
+.about .inner .img img {width: 100%; display: block;}
+
+.about .inner .leftText .title {margin-bottom: 50px; overflow: hidden;}
+.about .inner .leftText .title h3 {font-size: 1.56vw; font-weight: normal;}
+.about .inner .leftText .title h3 span {font-weight: bold;}
+.about .inner .leftText .profile {padding-bottom: 32px;}
+.about .inner .leftText .profile h3 {font-size: 1.56vw; font-weight: bold; padding-bottom: 20px;}
+.about .inner .leftText .profile ul {width: 60%;}
+.about .inner .leftText .profile ul li {width: 100%; display: flex; justify-content: space-between; text-align: left;}
+.about .inner .leftText .profile ul li p {font-size: 1.04vw; text-align: left; width: 40%;}
+.about .inner .leftText .profile ul li p.en4 {font-weight: bold;}
+.about .inner .leftText .edu {padding-bottom: 32px;}
+.about .inner .leftText .edu h3 {font-size: 1.56vw; font-weight: bold; padding-bottom: 20px;}
+.about .inner .leftText .edu ul {width: 60%;}
+.about .inner .leftText .edu ul li {display: flex; justify-content: space-between;}
+.about .inner .leftText .edu ul li p {font-size: 1.04vw; padding-bottom: 12px;}
+.about .inner .leftText .motto h3 {font-size: 1.56vw; font-weight: bold; padding-bottom: 20px;}
+.about .inner .leftText .motto p {font-size: 1.04vw;}
+
+
+/* skills */
+.skill {width: 100%; height: 200vh;}
+.skill .inner {width: 80%; margin:  0 auto; overflow: hidden;}
+.skill .inner .textBox {text-align: left; margin-bottom: 20vh; padding-top: 100px;}
+.skill .inner .textBox .title {font-size: 4.17vw; font-weight: normal; color: #019838;}
+.skill .inner .textBox .subText {font-size: 1.04vw;}
+.skill .inner .skills {display: flex; justify-content: space-between; width: 100%; flex-wrap: wrap;}
+.skill .inner .skills li {width: 30%; height: 300px; margin-bottom: 20px;}
+.skill .inner .skills li .flip {width: 100%; height: 100%; position: relative;}
+.skill .inner .skills li .flip .card {width: 100%; height: 100%; position: relative; transition: 0.6s; transform-style: preserve-3d;}
+.skill .inner .skills li .flip .card .front, .skill .inner .skills li .flip .card .back {position: absolute; width: 100%; height: 100%; backface-visibility: hidden; color: #f7f7f7; box-sizing: border-box; border-radius: 30px;}
+.skill .inner .skills li .flip .card .front {color: #f7f7f7; background:#131313; text-align: center; padding-top: 30px;}
+
+
+.skill .inner .skills li .flip .card .front h2 {font-size: 1.56vw; font-weight: normal; margin: 0 auto; }
+.skill .inner .skills li .flip .card .front p.img {width: 25%; margin: 0 auto; padding-top: 50px;}
+.skill .inner .skills li .flip .card .front p.img img {width: 100%; display: block;}
+.skill .inner .skills li .flip .card .back {transform: rotateY(180deg); background: #484848; text-align: center;}
+.skill .inner .skills li .flip .card .back h3.en3 {font-size: 2.08vw; text-align: center; padding-top: 25px; font-weight: normal;}
+.skill .inner .skills li .flip .card .back h3.en1 {font-size: 2.6vw; text-align: center; padding-top: 50px; font-weight: normal; color: #00AB3E;}
+.skill .inner .skills li:nth-child(1) .flip .card .back h3.en1 {color: #9D56F7;}
+.skill .inner .skills li:nth-child(2) .flip .card .back h3.en1 {color: #00AB3E;}
+.skill .inner .skills li:nth-child(3) .flip .card .back h3.en1 {color: #DD4D25;}
+.skill .inner .skills li:nth-child(4) .flip .card .back h3.en1 {color: #E8D44D;}
+.skill .inner .skills li:nth-child(5) .flip .card .back h3.en1 {color: #2FA3F7;}
+.skill .inner .skills li:nth-child(6) .flip .card .back h3.en1 {color: #F79500;}
+.skill .inner .skills li .flip .card .back p {font-size: 1.04vw; width: 70%; margin: 0 auto; padding-top: 30px;}
+.skill .inner .skills li .flip:hover .card {transform: rotateY(180deg);}
+
+/* stength */
+.strength {height: 100vh; width: 100%; position: relative; box-sizing: border-box; }
+.strength .title {margin-left: 10%; padding-top: 10vh;}
+.strength .title h2 {font-size: 4.17vw; color: #00AB3E;}
+.strength .title p {font-size: 1.04vw; color: #f7f7f7;}
+.strength ul {display: flex; padding: 15% 30%; box-sizing: border-box;}
+.strength ul li {width: 1000px; padding: 100px; box-sizing: border-box;  flex-shrink: 0 !important; position: relative;}
+.strength ul li .good {position: absolute; top: 0%; left: 0; opacity: 0; }
+.strength ul li .good h2 {font-size: 6.25vw; color: #00AB3E;}
+.strength ul li .good p {font-size: 1.04vw; color: #f7f7f7;}
+  
+
+
+/* hobby */
+
+.hobbyTitle {width: 100%; height: 120vh; box-sizing: border-box; overflow: hidden; background: #131313; padding-top: 40vh;}
+.hobbyTitle .textBox {text-align: center;}
+.hobbyTitle .textBox .title {font-size: 4.17vw; font-weight: normal; color: #00AB3E;}
+.hobbyTitle .textBox .subText {font-size: 1.04vw; color: #f7f7f7;}
+
+
+/* running */
+
+
+.running {width: 100%; height: 100vh; display: flex; justify-content: space-between; position: relative; overflow: hidden; box-sizing: border-box; padding-top: 10vh; background: #131313;}
+.running .textBox {text-align: left; margin-left: 10%;}
+.running .textBox h2 {font-size: 7.81vw; color: #00AB3E; font-weight: normal;}
+.running .textBox p {font-size: 1.04vw; color: #f7f7f7;}
+.running .imgBox {width: 17vw; position: absolute; right: 10%; top: 10%;}
+.running .imgBox li {width: 100%; position: absolute; top: 0; left: 0;}
+.running .imgBox img {width: 100%;}
+
+/* img position 설정 */
+
+.running .imgBox .img1 {transform: translate(-100px,0); z-index: 1;}
+.running .imgBox .img2 {transform: translate(-70px,0); z-index: 1;}
+.running .imgBox .img3 {transform: translate(-40px,0); z-index: 1;}
+.running .imgBox .img4 {transform: translate(-10px,0); z-index: 1;}
+.running .imgBox .img5 {transform: translate(20px,0); z-index: 1;}
+.running .imgBox .img6 {transform: translate(50px,0); z-index: 1;}
+.running .imgBox .img7 {transform: translate(80px,0); z-index: 1;}
+
+
+
+/* food */
+
+.food {width: 100%; height: 200vh; box-sizing: border-box; overflow: hidden; padding-top: 70vh; background: #131313;}
+.food .textBox {text-align: center; padding-bottom: 20vh;}
+.food .textBox h2 {font-size: 7.81vw; color: #00AB3E; font-weight: normal;}
+.food .textBox p {font-size: 1.04vw; color: #f7f7f7;}
+.food .simply-scroll-container {width: 100%;}
+.food .simply-scroll-clip {position: relative; overflow: hidden;}
+.food .simply-scroll .simply-scroll-list {display: flex; flex-wrap: wrap;}
+.food .simply-scroll .simply-scroll-list li {width: 300px; border-radius: 30px; margin:0 20px; box-sizing: border-box; overflow: hidden;}
+.food .simply-scroll .simply-scroll-list li img {width: 100%; filter: brightness(0.8);}
+.food .simply-scroll .simply-scroll-list li img:hover {filter: brightness(1); transition: all 0.3s;}
+
+
+/* hiking */
+
+
+.hiking {width: 100%; height: 200vh; overflow: hidden; box-sizing: border-box; background: #131313;}
+.hiking .textBox {margin-left: 10%;}
+.hiking .textBox h2 {font-size: 7.81vw; color: #00AB3E; font-weight: normal;}
+.hiking .textBox p {font-size: 1.04vw; color: #f7f7f7;}
+.hiking .mountain {margin-top: 100px;}
+.hiking .mountain li {width: 800px;}
+.hiking .mountain li a {display: block; width: 100%;}
+.hiking .mountain li a img {width: 100%;}
+
+
+
+
+/* next */
+.next {color: #f7f7f7; background: #131313; width: 100%; height: 100vh; padding-top: 20vh;}
+.next .inner {width: 100%; height: 80vh; text-align: center; box-sizing: border-box; background: #1e1e1e;}
+.next .inner .nextChapter {width: 100%; height: 100%;}
+.next .inner a {width: 100%; height: 100%; display: block; position: relative;}
+.next .inner a .bg {width: 100%; height: 0%; background: #00AB3E; position: absolute; bottom: 0; left: 0; display: block; transition: all 0.2s;}
+.next .inner a h2 {font-size: 7.81vw;  font-weight: normal; color: #00AB3E; position: absolute; top: 30%; text-align: center; width: 100%; z-index: 1; transition: all 0.2s;}
+.next .inner a h2 span {-webkit-text-stroke: 3px #f7f7f7; color: rgba(0, 0, 0, 0);}
+.next .inner a p {font-size: 1.04vw; border-radius: 30px; border: 1px solid #f7f7f7; display: inline-block; position: absolute; bottom: 30%; left: 50%; transform: translateX(-50%); padding: 8px 32px; z-index: 1; transition: all 0.2s;}
+
+/* next hover */
+.next .inner:hover h2 {color: #F7F7F7; transition: all 0.3s;}
+.next .inner:hover .bg {height: 100%; transition: all 0.5s;}
+.next .inner:hover p {color: #00AB3E; background: #f7f7f7; transition: all 0.3s;}
+
+/* footer */
+footer {background: #131313; color: #F7F7F7; width: 100%; height: 60vh; box-sizing: border-box;}
+footer .inner {width: 85%; height: 100%; margin: 0 auto;}
+footer .inner .svg {width: 600px; height: 300px; margin: 0 auto 30px;}
+footer .contact {display: flex; justify-content: space-between; width: 550px; margin: 0 auto;}
+footer .contact li a {display: block; font-size: 1.04vw; width: 100%; position: relative;}
+
+
+/* footer signature */
+footer .svg {position: relative; overflow: hidden; transition: all 0.5s;}
+footer .svg svg {position: absolute; top: 0; transition: all 0.5s;}
+footer .svg .hv {display: block; width: 100%; height: 100%; position: absolute; top: 100%; left: 0; font-size: 6.77vw; text-align: center; background: #131313; opacity: 0; transition: all 0.5s;}
+footer .svg .hv::after {content: ''; width: 100%; height: 5px; background: #f7f7f7; position: absolute; bottom: 35%; left: 0;}
+/* footer hover */
+footer .svg.on svg {top: -100%; opacity: 0; transition:  all 0.5s;}
+footer .svg.on .hv {top: 0; opacity: 1; transition: all 0.5s;}
+footer .contact li a { font-size: 1.04vw;}
+footer .contact li a::after {content: ''; width: 0%; height: 1px; background: #f7f7f7; position: absolute; bottom: -5px; left: -5%;}
+footer .contact li a:hover {animation: soft 0.3s  linear; transition: all 0.3s;}
+@keyframes soft {
+    50% {transform: rotatex(-30deg); scale: 1.1;}
+}
+footer .contact li a:hover::after {width: 110%; transition: all 0.3s;}
+

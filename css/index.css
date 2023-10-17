@@ -1,0 +1,324 @@
+@charset "UTF-8";
+
+
+/* reset */
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+button:focus {outline:none;}
+a:focus {outline:none}
+img {vertical-align: middle;}
+html {font-size: 10px;}
+
+/* font */
+@font-face {
+    font-family: 'SansPosterBold';
+    src: url(font/SansPosterBold.ttf);
+}
+@font-face {
+    font-family: 'against';
+    src: url(font/against\ regular.otf);
+}
+@font-face {
+    font-family: 'Edensor';
+    src: url(font/Edensor-FREE.otf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.en1 {font-family: 'SansPosterBold',sans-serif;}
+.en2 {font-family: 'against',sans-serif;}
+.en3 {font-family: 'Edensor',sans-serif;}
+.en4 {font-family: 'Montserrat', sans-serif; letter-spacing: -1px;}
+
+/* layout */
+body {background: #131313; width: 100%; color: #f7f7f7; font-family: 'pretendard',sans-serif;}
+.wrap {background: #131313;}
+
+/* header */
+header {width: 100%; margin: 0 auto; height: 100px; box-sizing: border-box; padding-top: 30px;}
+header .menu {width: 500px; display: flex; justify-content: space-between; margin: 0 auto;} 
+header .menu p a {font-size: 1.04vw; padding: 8px 24px; border-radius: 30px; transition: 0.2s; position: relative;}
+header .menu p a::before {content: ''; width: 0%; height: 2px; position: absolute; left: 10%; bottom: 7%; background: #f7f7f7; opacity: 0;}
+/* nav hover */
+header .menu p a:hover {animation: spacing 0.5s;}
+@keyframes spacing {
+    50% {letter-spacing: 0px;}
+}
+header .menu p a:hover::before {opacity: 1; transition: all 0.3s; width: 80%;}
+
+header .menuOpen {width:40px; height: 40px; position: fixed; top: 30px; right: 7.5%; mix-blend-mode: difference !important; z-index: 10;}
+header .menuOpen a {display: block; width: 100%; height: 100%; position: relative;}
+header .menuOpen a::before , header .menuOpen a::after , header .menuOpen a span {content: ''; width: 80%; height: 8%; background: #f7f7f7; position: absolute; top: 40%; left: 10%;}
+header .menuOpen a::after {top: 60%;}
+header .menuOpen a:hover {animation: shake 0.3s  linear; transition: all 0.5s;}
+@keyframes shake {
+    30% {transform: rotate(8deg);}
+    60% {transform: rotate(8deg);}
+}
+
+header .halfMenu {width: 50%; height: 100vh; position: fixed; top: 0; right: 0; text-align: center; box-sizing: border-box; padding-top: 150px; background: rgba(0, 0, 0, 0.9); z-index: 15; color: #f7f7f7; transform: translateX(100%); transition: all 0.4s;}
+header .halfMenu.on {transform: translateX(0%); transition: all 0.4s;}
+header .halfMenu .menuClose {width: 40px; height: 40px; position: absolute; top: 30px; right: 15%; opacity: 0;}
+header .halfMenu.on .menuClose {opacity: 1; transition: 0.8s;}
+header .halfMenu .menuClose a {display: block; width: 100%; height: 100%; position: relative; filter: brightness(0.7);}
+header .halfMenu .menuClose a::before , header .halfMenu .menuClose a::after {content: ''; width: 80%; height: 8%; position: absolute; top: 40%; left: 0; background: #f7f7f7; transform: rotate(45deg);}
+header .halfMenu .menuClose a::before {transform: rotate(-45deg);}
+header .halfMenu .menuClose a:hover {filter: brightness(1); transition: all 0.3s;}
+header .halfMenu li {width: 100%;}
+header .halfMenu li a {width:100%; height: 100%; font-size: 5.2vw; filter: brightness(0.7); display: block; position: relative;}
+header .halfMenu li a:hover {filter: brightness(1); transition: all 0.3s;}
+
+/* topbutton */
+.topBtn {position: fixed; bottom: 5%; right: 3%; width: 70px; height: 70px; mix-blend-mode: difference !important; z-index: 13;}
+.topBtn a {width: 100%; height: 100%; text-align: center; display: block; line-height: 70px; font-size: 1.04vw; color: #f7f7f7; filter: brightness(0.7); border: 1px solid #f7f7f7; border-radius: 50%;}
+.topBtn a:hover {animation: top 0.3s; filter: brightness(1); transition: all 0.3s;}
+@keyframes top {
+    50% {transform: scale(1.05);}
+}
+/* visual */
+.visual {width: 100%; height: 100vh; box-sizing: border-box; padding-top: 15vh; margin-top: -100px; margin-bottom: 200px;}
+
+.visual .leftTxt {overflow: hidden; display: inline-block; margin-left: 10%;}
+.visual .leftTxt h3 {font-size: 1.56vw; color: #00AB3E; animation: opacity 1s linear;}
+.visual .center {width: 100%; text-align: center; padding-top: 30px;}
+.visual .center img {width:36.5vw;}
+.visual .center h2 {font-size: 10.93vw; margin-top: -200px; color: #00AB3E;width: 100%;}
+.visual .scroll {width: 100%; text-align: center; margin-top: 55px;}
+.visual .scroll p {font-size: 1.04vw; font-weight: bolder;}
+.visual .scroll p img {width: 20px;}
+
+/* animation */
+.visual.motion .center img {animation: img 1.6s ease-out;}
+@keyframes img {
+    0% {opacity: 0;}
+    
+}
+
+
+.visual.motion .char {display: inline-block;  animation: slide-up 0.4s cubic-bezier(.5, 0, .5, 1) both; animation-delay: calc(80ms * var(--char-index));}
+
+@keyframes slide-up {
+  0% {transform: translateY(30px);opacity: 0;}
+  30% {transform: translateY(30px);opacity: 0;}
+} 
+
+.visual .scroll p img {animation: down 1s infinite linear;}
+@keyframes down {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(10px);}
+}
+
+
+
+/* why */
+.why { width: 100%; height: 100vh; color: #131313; box-sizing: border-box; overflow: hidden;}
+.why .inner {width: 85%; margin: 0 auto;}
+.why .inner .left {font-size: 1.56vw; font-weight: normal; padding-top: 150px;}
+.why .inner .main {width: 100%; text-align: center; color: #019838; padding-top: 130px;}
+.why .inner .main h2.en2 {font-size: 10.4vw;}
+.why .inner .main h2.en1 {font-size: 9.37vw;}
+
+/* elephant */
+.elephant {background: #f7f7f7; width: 100%; height: 100vh; box-sizing: border-box; overflow: hidden;}
+.elephant .inner {width: 85%; margin: 0 auto;}
+.elephant .inner .left {font-size: 1.56vw; font-weight: normal; color: #131313; padding-top: 150px;}
+.elephant .inner .main {width: 100%; text-align: center;}
+.elephant .inner .main .top {width: 100%; color: #019838; display: flex; justify-content: space-between; padding-top: 130px; padding-bottom: 30px;}
+.elephant .inner .main .top h2 {font-size: 5.73vw; font-weight: normal; line-height: 100%; width: 50%;}
+.elephant .inner .main .top h2.en1 {font-size: 6.77vw; text-align: left;}
+.elephant .inner .main .top h2.en2 {margin-top: 20px;}
+.elephant .inner .main .bottom {width: 100%; color: #131313; position: relative;}
+.elephant .inner .main .bottom li {display: flex; width: 100%; justify-content: space-between; padding-top: 60px; position: absolute; background: #f7f7f7;}
+.elephant .inner .main .bottom li p {width: 50%;}
+.elephant .inner .main .bottom li p.en3 {font-size: 3.9vw; font-weight: bold;}
+.elephant .inner .main .bottom li p.explain {font-size: 1.04vw; text-align: left; padding-top: 20px;}
+.elephant .inner .main .bottom li:nth-child(1) {z-index: 1;}
+.elephant .inner .main .bottom li:nth-child(2) {z-index: 2;}
+.elephant .inner .main .bottom li:nth-child(3) {z-index: 3;}
+.elephant .inner .main .bottom li:nth-child(4) {z-index: 4;}
+.elephant .inner .main .bottom li:nth-child(5) {z-index: 5;}
+
+
+
+
+
+/* About */
+.about {width: 100%; height: 400vh; box-sizing: border-box; padding-top: 80vh; background: #f7f7f7; color: #131313; overflow: hidden;}
+.about .inner {width: 85%; margin: 0 auto; height: 100%; overflow: hidden; box-sizing: border-box;}
+.about .inner .me {display: flex; justify-content: space-between;}
+.about .inner h2 {font-size: 2.08vw; color: #019838; margin-bottom: 52px;}
+.about .inner .me h3 {font-size: 1.56vw; font-weight: bold; padding-bottom: 12px;}
+.about .inner .me .profile p span {padding-left: 5px;}
+.about .inner .me .left > div {padding-top: 48px;}
+.about .inner .me .middle > div {padding-top: 48px;}
+.about .inner .me p {font-size: 1.04vw; padding-bottom: 8px;}
+.about .inner .me .strength span, .about .inner .me .hobby span {padding-left: 16px;}
+.about .inner .me .skills p{position: relative;}
+.about .inner .me .skills p span{position: absolute; right: -70px; width: 308px; height: 15px; background: #dadada;}
+.about .inner .me .skills p span::after {content: ''; width: 00%; height: 100%; background: #131313; position: absolute; left: 0; top:0;}
+.about .inner .me .img {width: 500px;}
+.about .inner .me .img img {width: 100%;}
+.about .inner .video {width: 100%; margin-top: 80vh;}
+.about .inner .video video {width: 100%;}
+
+/* effect */
+.me.motion .skills p:nth-child(2) span:after {width: 95%; transition: all 1s;}
+.me.motion .skills p:nth-child(3) span:after {width: 95%; transition: all 1s;}
+.me.motion .skills p:nth-child(4) span:after {width: 90%; transition: all 1s;}
+.me.motion .skills p:nth-child(5) span:after {width: 85%; transition: all 1s;}
+.me.motion .skills p:nth-child(6) span:after {width: 80%; transition: all 1s;}
+.me.motion .skills p:nth-child(7) span:after {width: 75%; transition: all 1s;}
+
+
+
+/* ux */
+.ux {width: 100%; height: 316vh; box-sizing: border-box;}
+.ux .title {padding: 50vh 0 50vh; text-align: center; height: 100vh; box-sizing: border-box;}
+.ux .title h2 {font-size: 6.25vw; color: #00AB3E;}
+.ux.motion .char {display: inline-block;  animation: slide-up 0.4s cubic-bezier(.5, 0, .5, 1) both; animation-delay: calc(80ms * var(--char-index));}
+
+.ux .title p {font-size: 1.04vw; padding-top: 24px;}
+.ux.motion .title p {animation: opacity 1s linear}
+@keyframes opacity {
+    0% {opacity: 0;}
+}
+.ux .project {width: 100%; height: 100vh;}
+.ux .project li .img {width: 100%; height: 100%; filter:brightness(0.7);transition: all 0.3s;}
+
+.ux .project li .img img {width: 100%; height: 100%; }
+.ux .project li {color: #f7f7f7; position: relative;}
+.ux .project li .projectName {font-size: 1.56vw; font-weight: bold; position: absolute; top: 10%; left: 10%;}
+.ux .project li .textBox {width: 100%; position: absolute; top: 40%; left: 0; text-align: center;}
+.ux  .project li .textBox .mainTxt {font-size: 4.17vw; text-transform: uppercase; font-weight: normal; line-height: 1.2;}
+.ux  .project li .textBox .subTxt {font-size: 1.3vw; padding-top: 8px; margin-bottom: 100px; font-weight: 300;}
+.ux .project li .btn {display:inline-block; font-size: 1.04vw; font-weight: bold;  padding: 11px 32px; border: 2px solid #f7f7f7; border-radius: 30px; overflow: hidden;}
+
+/* btn hover */
+.ux .project li .btn:hover {color: #131313; background: #f7f7f7; transition: all 0.3s;} 
+
+
+/* coding */
+.coding {width: 100%; height: 200vh; overflow: hidden; padding-top: 50vh; background: #131313; position: relative;}
+.coding .title {width: 100%; text-align: center; padding: 25vh 0 30vh;}
+.coding .title h2 {font-size: 6.25vw; color: #00AB3E;}
+.coding .title p {font-size: 1.04vw; padding-top: 24px; color: #F7F7F7;}
+.coding .more {color: #f7f7f7; padding: 8px 32px; border: 1px solid #F7F7F7; border-radius: 30px; display:inline-block; position: absolute; top:45%; right: 250px; font-size: 1.04vw;}
+.coding .more:hover {background: #F7F7F7; color: #131313; transition: all 0.3s;}
+
+.coding .site {color: #F7F7F7; display: flex; box-sizing: border-box;} 
+.coding .site li {width: 960px; height: 700px; flex-shrink: 0 !important; padding: 0 100px; filter: brightness(0.75);}
+.coding .site li .img {width: 100%;}
+.coding .site li img {width: 100%;}
+.coding .site li .txt {display: flex; justify-content: space-between;}
+.coding .site li .sub {padding-top: 8px;}
+.coding .site li .sub p {font-size: 1.04vw; font-weight: 300;}
+.coding .site li .sub p:nth-child(1) {margin-bottom: 90px;}
+.coding .site li h3 {font-size: 3.65vw;}
+.coding .site li:hover {filter: brightness(1);}
+
+/* ncs */
+.ncs {width: 100%; height: 100vh; background: #131313;}
+.ncs .inner {width: 85%; margin: 0 auto;}
+.ncs .inner .title {padding-bottom: 100px;}
+.ncs .inner .title h2 {font-size: 4.17vw; color: #00AB3E;}
+.ncs .inner .title p {font-size: 1.04vw; color: #f7f7f7;}
+.ncs .inner .process {width: 100%;}
+.ncs .inner .process li {display: flex; color: #f7f7f7; height: 85px; line-height: 85px; border-bottom: 1px solid #F7F7F7; justify-content: space-between; position: relative;}
+.ncs .inner .process li a {display: flex; width: 80%; justify-content: space-between;}
+.ncs .inner .process li img {width: 600px; height: 450px; opacity: 0; visibility: hidden; position: absolute; right: 0px; top: 0px; transition: all 0.3s;}
+.ncs .inner .process li h3 {font-weight: normal; font-size: 1.3vw;}
+.ncs .inner .process li p { font-size: 1.04vw;}
+.ncs .inner .process li:hover {height: 100px; line-height: 100px; background: #1e1e1e; transition: 0.3s;}
+.ncs .inner .process li:hover img {opacity: 1; visibility: visible; z-index: 2; transition: 0.3s;}
+
+/* skill */
+/* .skill {width: 100%; height: 200vh; background: #131313; position: relative; overflow: hidden; padding-top: 30vh; box-sizing: border-box;}
+.skill .textBox {margin-left: 7.5%; text-align: left; padding-bottom: 10vh;}
+.skill .textBox h2 {font-size: 4.17vw; color: #00AB3E;}
+.skill .textBox p {font-size: 1.04vw; color: #f7f7f7;}
+
+
+.skill .skillName {font-size: 7.8vw; display: flex; color: #f7f7f7; animation: go 10s infinite linear; width: 100%; }
+@keyframes go{
+    0% {transform: translate(0,0);}
+    100% {transform: translate(-100%,0);}
+}c
+.skill .skillName:hover {animation-play-state: paused;}
+.skill .skillName li {margin-left: 60px;}
+.skill .skillName li a {width: 100%; display: block;}
+.skill .skillName li:hover {color: #00AB3E; transform: scale(1.1); transition: all 0.3s;}
+
+
+
+.skill .skillful {position: absolute; top:53%; left: 50%; transform: translate(-50%,-50%); width: 100%;}
+.skill .skillful li {text-align: center; position: absolute; top: 0; left:50%; transform:  translate(-50%,-50%);}
+.skill .skillful li h2 {opacity: 0;}
+.skill .skillful li h3 {opacity: 0;}
+.skill .skillful li h2::after {content: ''; width: 100%; height: 100%; background: #131313; z-index: 2; position: absolute; top: 0; left: 0;}
+.skill .skillful li h2 {font-size: 7.8vw; color: #00AB3E;}
+.skill .skillful li h3 {font-size: 1.04vw; color: #F7F7F7; font-weight: normal; padding-top: 20px;}
+.skill .skillful li.on h2 {opacity: 1; transition:all 0.3s; }
+.skill .skillful li.on h3 {opacity: 1; transition:all 0.7s;}
+.skill .skillful li.on h2::after {height: 0%; transition:all 0.8s;}
+ */
+ .skill {width: 85%; margin: 0 auto;  height: 200vh; position: relative; padding-top: 30vh; box-sizing: border-box; overflow: hidden;}
+ .skill .textBox { text-align: left; padding-bottom: 10vh;}
+ .skill .textBox h2 {font-size: 4.17vw; color: #00AB3E;}
+ .skill .textBox p {font-size: 1.04vw; color: #f7f7f7;}
+
+ .skill .skillName li {font-size: 4.69vw; transition: all 0.3s; width: 50%;}
+ .skill .skillName li:hover {color: #00AB3E; font-size: 5vw; transition: all 0.3s;}
+ .skill .skillful {position: absolute; top: 40%; right: -15%; width: 50%;}
+.skill .skillful li {text-align: center; position: absolute; top:0; left:0; transform: translate(-50%,-50%);}
+.skill .skillful li h2 {font-size: 7.8vw; color: #00AB3E; opacity: 0; position: relative;}
+.skill .skillful li h3 {font-size: 1.04vw; color: #f7f7f7; font-weight: normal; padding-top: 20px; opacity: 0;}
+.skill .skillful li h2::after {content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 2; background: #131313;}
+.skill .skillful li.on h2 {opacity: 1; transition: all 0.3s;}
+.skill .skillful li.on h3 {opacity: 1; transition: all 0.7s;}
+.skill .skillful li.on h2::after {height: 0%; transition: all 0.8s;}
+
+/* next */
+.next {color: #f7f7f7; background: #131313; width: 100%; height: 100vh;}
+.next .inner {width: 100%; height: 80vh; text-align: center; box-sizing: border-box; background: #1e1e1e;}
+.next .inner .nextChapter {width: 100%; height: 100%;}
+.next .inner a {width: 100%; height: 100%; display: block; position: relative;}
+.next .inner a .bg {width: 100%; height: 0%; background: #00AB3E; position: absolute; bottom: 0; left: 0; display: block; transition: all 0.2s;}
+.next .inner a h2 {font-size: 7.8vw;  font-weight: normal; color: #00AB3E; position: absolute; top: 30%; text-align: center; width: 100%; z-index: 1; transition: all 0.2s;}
+.next .inner a h2 span {-webkit-text-stroke: 3px #f7f7f7; color: rgba(0, 0, 0, 0);}
+.next .inner a p {font-size: 1.04vw; border-radius: 30px; border: 1px solid #f7f7f7; display: inline-block; position: absolute; bottom: 30%; left: 50%; transform: translateX(-50%); padding: 8px 32px; z-index: 1; transition: all 0.2s;}
+
+/* next hover */
+.next .inner:hover h2 {color: #F7F7F7; transition: all 0.3s;}
+.next .inner:hover .bg {height: 100%; transition: all 0.5s;}
+.next .inner:hover p {color: #00AB3E; background: #f7f7f7; transition: all 0.3s;}
+
+/* footer */
+footer {background: #131313; color: #F7F7F7; width: 100%; height: 60vh; box-sizing: border-box;}
+footer .inner {width: 85%; height: 100%; margin: 0 auto;}
+footer .inner .svg {width: 600px; height: 300px; margin: 0 auto 30px;}
+footer .contact {display: flex; justify-content: space-between; width: 550px; margin: 0 auto;}
+footer .contact li a {display: block; font-size: 1.04vw; width: 100%; position: relative;}
+
+
+/* footer signature */
+footer .svg {position: relative; overflow: hidden; transition: all 0.5s;}
+footer .svg svg {position: absolute; top: 0; transition: all 0.5s;}
+footer .svg .hv {display: block; width: 100%; height: 100%; position: absolute; top: 100%; left: 0; font-size: 6.77vw; text-align: center; background: #131313; opacity: 0; transition: all 0.5s;}
+footer .svg .hv::after {content: ''; width: 100%; height: 5px; background: #f7f7f7; position: absolute; bottom: 35%; left: 0;}
+/* footer hover */
+footer .svg.on svg {top: -100%; opacity: 0; transition:  all 0.5s;}
+footer .svg.on .hv {top: 0; opacity: 1; transition: all 0.5s;}
+footer .contact li a { font-size: 1.04vw;}
+footer .contact li a::after {content: ''; width: 0%; height: 1px; background: #f7f7f7; position: absolute; bottom: -5px; left: -5%;}
+footer .contact li a:hover {animation: soft 0.3s  linear; transition: all 0.3s;}
+@keyframes soft {
+    50% {transform: rotatex(-30deg); scale: 1.1;}
+}
+footer .contact li a:hover::after {width: 110%; transition: all 0.3s;}
+

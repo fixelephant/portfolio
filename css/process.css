@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+
+/* reset */
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+button:focus {outline:none;}
+a:focus {outline:none}
+img {vertical-align: middle;}
+html {font-size: 10px;}
+
+
+/* font */
+@font-face {
+    font-family: 'SansPosterBold';
+    src: url(font/SansPosterBold.ttf);
+}
+@font-face {
+    font-family: 'against';
+    src: url(font/against\ regular.otf);
+}
+@font-face {
+    font-family: Edensor;
+    src: url(font/Edensor-FREE.otf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.en1 {font-family: 'SansPosterBold',sans-serif;}
+.en2 {font-family: 'against',sans-serif;}
+.en3 {font-family: 'Edensor',sans-serif;}
+.en4 {font-family: 'Montserrat', sans-serif; letter-spacing: -1px;}
+
+/* layout */
+body {background: #131313; width: 100%; color: #F7F7F7; font-family: 'pretendard',sans-serif;}
+
+/* header */
+header {width: 100%; margin: 0 auto; height: 100px; box-sizing: border-box; padding-top: 30px;}
+header .menu {width: 500px; display: flex; justify-content: space-between; margin: 0 auto;} 
+header .menu p a {font-size: 1.04vw; padding: 8px 24px; border-radius: 30px; transition: 0.2s; position: relative;}
+header .menu p a::before {content: ''; width: 0%; height: 2px; position: absolute; left: 10%; bottom: 7%; background: #f7f7f7; opacity: 0;}
+/* nav hover */
+header .menu p a:hover {animation: spacing 0.5s;}
+@keyframes spacing {
+    50% {letter-spacing: 0px;}
+}
+header .menu p a:hover::before {opacity: 1; transition: all 0.3s; width: 80%;}
+
+header .menuOpen {width:40px; height: 40px; position: fixed; top: 30px; right: 7.5%; mix-blend-mode: difference !important; z-index: 10;}
+header .menuOpen a {display: block; width: 100%; height: 100%; position: relative;}
+header .menuOpen a::before , header .menuOpen a::after , header .menuOpen a span {content: ''; width: 80%; height: 8%; background: #f7f7f7; position: absolute; top: 40%; left: 10%;}
+header .menuOpen a::after {top: 60%;}
+header .menuOpen a:hover {animation: shake 0.3s  linear; transition: all 0.5s;}
+@keyframes shake {
+    30% {transform: rotate(8deg);}
+    60% {transform: rotate(8deg);}
+}
+
+header .halfMenu {width: 50%; height: 100vh; position: fixed; top: 0; right: 0; text-align: center; box-sizing: border-box; padding-top: 150px; background: rgba(0, 0, 0, 0.9); z-index: 15; color: #f7f7f7; transform: translateX(100%); transition: all 0.4s;}
+header .halfMenu.on {transform: translateX(0%); transition: all 0.4s;}
+header .halfMenu .menuClose {width: 40px; height: 40px; position: absolute; top: 30px; right: 15%; opacity: 0;}
+header .halfMenu.on .menuClose {opacity: 1; transition: 0.8s;}
+header .halfMenu .menuClose a {display: block; width: 100%; height: 100%; position: relative; filter: brightness(0.7);}
+header .halfMenu .menuClose a::before , header .halfMenu .menuClose a::after {content: ''; width: 80%; height: 8%; position: absolute; top: 40%; left: 0; background: #f7f7f7; transform: rotate(45deg);}
+header .halfMenu .menuClose a::before {transform: rotate(-45deg);}
+header .halfMenu .menuClose a:hover {filter: brightness(1); transition: all 0.3s;}
+header .halfMenu li {width: 100%;}
+header .halfMenu li a {width:100%; height: 100%; font-size: 5.2vw; filter: brightness(0.7); display: block; position: relative;}
+header .halfMenu li a:hover {filter: brightness(1); transition: all 0.3s;}
+
+/* topbutton */
+.topBtn {position: fixed; bottom: 5%; right: 3%; width: 70px; height: 70px; mix-blend-mode: difference !important; z-index: 13;}
+.topBtn a {width: 100%; height: 100%; text-align: center; display: block; line-height: 70px; font-size: 1.04vw; color: #f7f7f7; filter: brightness(0.7); border: 1px solid #f7f7f7; border-radius: 50%;}
+.topBtn a:hover {animation: top 0.3s; filter: brightness(1); transition: all 0.3s;}
+@keyframes top {
+    50% {transform: scale(1.05);}
+}
+
+/* visual */
+.visual {width: 100%; height: 100vh; margin-top: -100px; box-sizing: border-box; text-align: center; padding-top: 45vh;}
+.visual h2 {font-size: 6.25vw; color:#00AB3E;}
+
+
+
+/* brain */
+.brain {width:80%; height: 170vh; margin: 0 auto; box-sizing: border-box; padding-top: 10vh; padding-bottom: 70vh;}
+.brain .textBox {margin-bottom: 100px;}
+.brain .textBox h2 {color: #00AB3E; font-size: 6.25vw; font-weight: normal;}
+.brain .textBox p {color: #f7f7f7; font-size: 1.04vw;}
+.brain .contents {width: 100%; display: flex; justify-content: space-between;}
+.brain .contents .img {width: 700px;}
+.brain .contents .img img {width:100%;}
+.brain .contents .text {font-size: 1.3vw; text-align: left; width: 450px;}
+
+/* affinity */
+.affinity {width: 80%; height: 300vh; padding-top: 30vh; margin: 0 auto;}
+.affinity .textBox {margin-bottom: 100px;}
+.affinity .textBox h2 {color: #00AB3E; font-size: 6.25vw; font-weight: normal;}
+.affinity .textBox p {color: #f7f7f7; font-size: 1.04vw;}
+.affinity .top {display: flex; justify-content: space-between; height: 80vh;} 
+.affinity .top .img {width: 800px;}
+.affinity .top img {width:100%;}
+
+.affinity .top .text li {padding-bottom: 50px;}
+.affinity .top .text li p {font-size: 1.04vw;}
+.affinity .bottom {width: 100%; height: 150vh; box-sizing: border-box; padding-top: 30vh;}
+.affinity .bottom h3 {font-size: 2.1vw; padding-bottom: 8vh;}
+.affinity .bottom .think li {padding-bottom: 30px;}
+.affinity .bottom .think li p {font-size: 1.3vw;}
+.affinity .bottom .think li .group {font-weight: bold; padding-bottom: 10px;}
+/* insight */
+.insight {width: 80%; height: 100vh; margin: 0 auto; box-sizing: border-box;}
+.insight .title {color: #00AB3E; font-size: 4.17vw; font-weight: normal; padding-bottom: 30vh;}
+.insight .explain {font-size: 2.34vw; color: #F7F7F7; text-align: center; font-weight: normal;}

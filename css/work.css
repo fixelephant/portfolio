@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+
+/* reset */
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+button:focus {outline:none;}
+a:focus {outline:none}
+img {vertical-align: middle;}
+html {font-size: 10px;}
+
+
+/* font */
+@font-face {
+    font-family: 'SansPosterBold';
+    src: url(font/SansPosterBold.ttf);
+}
+@font-face {
+    font-family: 'against';
+    src: url(font/against\ regular.otf);
+}
+@font-face {
+    font-family: Edensor;
+    src: url(font/Edensor-FREE.otf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.en1 {font-family: 'SansPosterBold',sans-serif;}
+.en2 {font-family: 'against',sans-serif;}
+.en3 {font-family: 'Edensor',sans-serif;}
+.en4 {font-family: 'Montserrat', sans-serif; letter-spacing: -1px;}
+
+/* layout */
+body {background: #131313; width: 100%; color: #F7F7F7; font-family: 'pretendard',sans-serif;}
+
+/* header */
+header {width: 100%; margin: 0 auto; height: 100px; box-sizing: border-box; padding-top: 30px;}
+header .menu {width: 500px; display: flex; justify-content: space-between; margin: 0 auto;} 
+header .menu p a {font-size: 1.04vw; padding: 8px 24px; border-radius: 30px; transition: 0.2s; position: relative;}
+header .menu p a::before {content: ''; width: 0%; height: 2px; position: absolute; left: 10%; bottom: 7%; background: #f7f7f7; opacity: 0;}
+/* nav hover */
+header .menu p a:hover {animation: spacing 0.5s;}
+@keyframes spacing {
+    50% {letter-spacing: 0px;}
+}
+header .menu p a:hover::before {opacity: 1; transition: all 0.3s; width: 80%;}
+
+header .menuOpen {width:40px; height: 40px; position: fixed; top: 30px; right: 7.5%; mix-blend-mode: difference !important; z-index: 10;}
+header .menuOpen a {display: block; width: 100%; height: 100%; position: relative;}
+header .menuOpen a::before , header .menuOpen a::after , header .menuOpen a span {content: ''; width: 80%; height: 8%; background: #f7f7f7; position: absolute; top: 40%; left: 10%;}
+header .menuOpen a::after {top: 60%;}
+header .menuOpen a:hover {animation: shake 0.3s  linear; transition: all 0.5s;}
+@keyframes shake {
+    30% {transform: rotate(8deg);}
+    60% {transform: rotate(8deg);}
+}
+
+header .halfMenu {width: 50%; height: 100vh; position: fixed; top: 0; right: 0; text-align: center; box-sizing: border-box; padding-top: 150px; background: rgba(0, 0, 0, 0.9); z-index: 15; color: #f7f7f7; transform: translateX(100%); transition: all 0.4s;}
+header .halfMenu.on {transform: translateX(0%); transition: all 0.4s;}
+header .halfMenu .menuClose {width: 40px; height: 40px; position: absolute; top: 30px; right: 15%; opacity: 0;}
+header .halfMenu.on .menuClose {opacity: 1; transition: 0.8s;}
+header .halfMenu .menuClose a {display: block; width: 100%; height: 100%; position: relative; filter: brightness(0.7);}
+header .halfMenu .menuClose a::before , header .halfMenu .menuClose a::after {content: ''; width: 80%; height: 8%; position: absolute; top: 40%; left: 0; background: #f7f7f7; transform: rotate(45deg);}
+header .halfMenu .menuClose a::before {transform: rotate(-45deg);}
+header .halfMenu .menuClose a:hover {filter: brightness(1); transition: all 0.3s;}
+header .halfMenu li {width: 100%;}
+header .halfMenu li a {width:100%; height: 100%; font-size: 5.2vw; filter: brightness(0.7); display: block; position: relative;}
+header .halfMenu li a:hover {filter: brightness(1); transition: all 0.3s;}
+
+/* topbutton */
+.topBtn {position: fixed; bottom: 5%; right: 3%; width: 70px; height: 70px; mix-blend-mode: difference !important; z-index: 13;}
+.topBtn a {width: 100%; height: 100%; text-align: center; display: block; line-height: 70px; font-size: 1.04vw; color: #f7f7f7; filter: brightness(0.7); border: 1px solid #f7f7f7; border-radius: 50%;}
+.topBtn a:hover {animation: top 0.3s; filter: brightness(1); transition: all 0.3s;}
+@keyframes top {
+    50% {transform: scale(1.05);}
+}
+/* visual */
+.visual {width: 100%; height: 100vh; box-sizing: border-box;}
+.visual .inner {width: 85%; margin:0 auto;}
+.visual .inner .center {width: 100%; color: #00AB3E; text-align: center; margin-top: 18vh;}
+.visual .inner .center h2 {font-size: 8.85vw;}
+.visual .inner .scroll {width: 100%; text-align: center; margin-top: 15vh;}
+.visual .inner .scroll p {font-size: 1.04vw; font-weight: bolder;}
+.visual .inner .scroll p img {width: 1.04vw;}
+
+
+/* visual animation */
+.visual.motion .char {display: inline-block;  animation: slide-up 0.4s cubic-bezier(.5, 0, .5, 1) both; animation-delay: calc(80ms * var(--char-index));}
+
+
+@keyframes slide-up {
+  0% {transform: translateY(-30px);opacity: 0;}
+  30% {transform: translateY(-30px);opacity: 0;}
+} 
+
+.visual .inner .scroll p img {animation: down 1s infinite linear;}
+@keyframes down {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(10px);}
+}
+
+
+/* principle */
+.principle {width: 100%; height: 100vh; color: #F7F7F7; box-sizing: border-box; padding-top: 50vh; overflow: hidden;}
+.principle .inner {width: 85%; height: 100%; margin: 0 auto; overflow: hidden;}
+.principle .inner .left {font-size: 1.56vw; text-align: left; font-weight: bold; color: #00AB3E; padding-bottom: 3vh; }
+.principle .inner .main {font-size: 5.73vw; line-height: 1.1; font-weight: normal; overflow: hidden;}
+.principle .inner .sub {font-size: 1.04vw; font-weight: normal; margin-top: 2vh;}
+
+/* principle animation */
+.principle.motion .left {animation: from-left 0.6s linear;}
+.principle.motion .char {display: inline-block;  animation: slide-up 0.4s cubic-bezier(.5, 0, .5, 1) both; animation-delay: calc(40ms * var(--char-index));}
+.principle.motion .sub {animation: opacity 1.5s linear;}
+
+@keyframes from-left {
+    0% {transform: translateX(-20%); opacity: 0;}
+    
+}
+@keyframes opacity {
+    0% {opacity: 0;}
+    
+}
+
+
+/* ux */
+.ux {width: 100%;}
+.ux .inner {width: 100%; height: 100%; margin:  0 auto; padding-top: 50vh;}
+.ux .inner .title {text-align: center; width: 100%; padding-bottom: 60vh;}
+.ux .inner .title .main {font-size: 6.25vw; font-weight: normal; color: #00AB3E; padding-bottom: 20px;}
+.ux .inner .title .sub {font-size: 1.04vw; font-weight: normal; color: #F7F7F7;}
+
+.ux.motion .title {animation: opacity 1.5s;}
+
+.ux .inner .project li {width: 100%; height: 200vh; overflow: hidden; box-sizing: border-box;}
+.ux .inner .project li .top {width: 100%; height: 100vh; position: relative;}
+.ux .inner .project li .top .img {width: 100%; height: 100%; filter: brightness(0.5);}
+.ux .inner .project li .top .img img {width: 100%; height: 100%;}
+.ux .inner .project li .top .text {position: absolute; right: 7.5%; bottom: 5%; text-align: right;}
+.ux .inner .project li .top .text .who {color: #131313; padding: 12px 24px; display: inline-block; background: #F7F7F7; font-size: 30px; border-radius: 50px; font-weight: bold;}
+.ux .inner .project li .top .what {font-size: 4.17vw; position: relative; z-index: 2; padding: 0 1vh;}
+.ux .inner .project li .top .what::before {content: ''; width: 100%; height: 60px; background: #00AB3E; position: absolute; bottom: -25%; left: 0; z-index: -1;} 
+.ux .inner .project li .top .mini {display: flex; color: #F7F7F7; padding-top: 3vh; width: 70%; justify-content: space-between; align-items:center; margin-left: auto;}
+.ux .inner .project li .top .mini p {font-size: 1.04vw; }
+
+.ux .inner .project li .bottom {width: 85%; margin: 0 auto; height: 100vh; box-sizing: border-box; padding-top: 10vh; position: relative;}
+.ux .inner .project li .bottom  .ow > div {padding-bottom: 5vh;}
+.ux .inner .project li .bottom  .ow > div:nth-child(2) {margin-left: auto; width: 70%;}
+.ux .inner .project li .bottom .overview {width: 100%; text-align: left; padding-bottom: 10vh;}
+.ux .inner .project li .bottom .overview h3 {font-size:2.86vw; font-weight: normal;}
+.ux .inner .project li .bottom .overview p {font-size:1.3vw; font-weight: normal;}
+.ux .inner .project li .bottom .ow { width: 55%; margin-left: auto;}
+.ux .inner .project li .bottom .ow h4 {font-size: 2.34vw; font-weight: normal; padding-bottom: 8px;}
+.ux .inner .project li .bottom .ow p {font-size: 1.04vw;}
+.ux .inner .project li .bottom .goto {display: block; position: absolute; left: 0; bottom: 20%; font-size: 4.17vw; border-radius: 50px; padding: 16px 32px; box-sizing: border-box; overflow: hidden; border: 3px solid #f7f7f7;}
+.ux .inner .project li .bottom .goto::after {content: ''; width: 100%; height: 0%; position: absolute; bottom: 0; left: 0; background: #00AB3E; z-index: -3; transition: all 0.3s;}
+.ux .inner .project li .bottom .goto:hover::after {height: 100%; transition: all 0.3s;}
+
+
+
+/* coding */
+.coding {width: 100%; height: 400vh;}
+.coding .inner {width: 90%; margin: 0 auto; text-align: center;}
+.coding .inner .title {text-align: center;padding: 50vh 0;}
+.coding .inner .title h2 {font-size: 4.43vw; font-weight: normal; color: #00AB3E; padding-bottom: 20px;}
+.coding .inner .title p {font-size: 1.04vw; color: #F7F7F7;}
+
+.coding .inner .collect {width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between;}
+.coding .inner .collect li {width: 472px;  margin-bottom: 10vh; box-sizing: border-box;}
+.coding .inner .collect li:nth-child(3n-1) {margin-top: -100px;}
+.coding .inner .collect li .img {width: 100%; background:gray; overflow:hidden;}
+.coding .inner .collect li .img img {width: 100%; object-fit: cover; height: 100%;}
+.coding .inner .collect li .text {width: 100%; padding-top: 30px; text-align: left;}
+.coding .inner .collect li .text .name {font-size: 1.2vw; padding-bottom: 8px;}
+.coding .inner .collect li .text .explain {font-size: 1.04vw; filter: brightness(0.8);}
+.coding .inner .collect li a {filter: brightness(0.6); transition: all 0.3s;}
+.coding .inner .collect li a:hover {filter: brightness(1); transition: all 0.6s;}
+.coding .inner .collect li a:hover img {transform: scale(1.05); transition: all 0.5s;}
+
+
+/* next */
+.next {color: #f7f7f7; background: #131313; width: 100%; height: 100vh;}
+.next .inner {width: 100%; height: 80vh; text-align: center; box-sizing: border-box; background: #1e1e1e;}
+.next .inner .nextChapter {width: 100%; height: 100%;}
+.next .inner a {width: 100%; height: 100%; display: block; position: relative;}
+.next .inner a .bg {width: 100%; height: 0%; background: #00AB3E; position: absolute; bottom: 0; left: 0; display: block; transition: all 0.2s;}
+.next .inner a h2 {font-size: 7.8vw;  font-weight: normal; color: #00AB3E; position: absolute; top: 30%; text-align: center; width: 100%; z-index: 1; transition: all 0.2s;}
+.next .inner a h2 span {-webkit-text-stroke: 3px #f7f7f7; color: rgba(0, 0, 0, 0);}
+.next .inner a p {font-size: 1.04vw; border-radius: 30px; border: 1px solid #f7f7f7; display: inline-block; position: absolute; bottom: 30%; left: 50%; transform: translateX(-50%); padding: 8px 32px; z-index: 1; transition: all 0.2s;}
+
+/* next hover */
+.next .inner:hover h2 {color: #F7F7F7; transition: all 0.3s;}
+.next .inner:hover .bg {height: 100%; transition: all 0.5s;}
+.next .inner:hover p {color: #00AB3E; background: #f7f7f7; transition: all 0.3s;}
+
+/* footer */
+footer {background: #131313; color: #F7F7F7; width: 100%; height: 60vh; box-sizing: border-box;}
+footer .inner {width: 85%; height: 100%; margin: 0 auto;}
+footer .inner .svg {width: 600px; height: 300px; margin: 0 auto 30px;}
+footer .contact {display: flex; justify-content: space-between; width: 550px; margin: 0 auto;}
+footer .contact li a {display: block; font-size: 20px; width: 100%; position: relative;}
+
+
+/* footer signature */
+footer .svg {position: relative; overflow: hidden; transition: all 0.5s;}
+footer .svg svg {position: absolute; top: 0; transition: all 0.5s;}
+footer .svg .hv {display: block; width: 100%; height: 100%; position: absolute; top: 100%; left: 0; font-size: 130px; text-align: center; background: #131313; transition: all 0.5s;}
+footer .svg .hv::after {content: ''; width: 100%; height: 5px; background: #f7f7f7; position: absolute; bottom: 35%; left: 0;}
+/* footer hover */
+footer .svg.on svg {top: -100%; opacity: 0; transition:  all 0.5s;}
+footer .svg.on .hv {top: 0; transition: all 0.5s;}
+
+footer .contact li a::after {content: ''; width: 0%; height: 1px; background: #f7f7f7; position: absolute; bottom: -5px; left: -5%;}
+footer .contact li a:hover {animation: soft 0.3s  linear; transition: all 0.3s;}
+@keyframes soft {
+    50% {transform: rotatex(-30deg); scale: 1.1;}
+}
+footer .contact li a:hover::after {width: 110%; transition: all 0.3s;}
